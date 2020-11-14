@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Shortest Path Animation</title>
+	<style>
+		body { font-family: sans-serif; }
+
+		canvas { width: 300px; height: 300px; margin: 8px; }
+		@media (min-width: 500px) and (min-height: 800px) {
+			canvas { width: 450px; height: 450px; }
+		}
+		@media (min-width: 650px) and (min-height: 950px) {
+			canvas { width: 600px; height: 600px; }
+		}
+		@media (min-width: 800px) and (min-height: 1100px) {
+			canvas { width: 750px; height: 750px; }
+		}
+		@media (min-width: 950px) and (min-height: 1250px) {
+			canvas { width: 900px; height: 900px; }
+		}
+		@media (min-width: 1250px) and (min-height: 1550px) {
+			canvas { width: 1200px; height: 1200px; }
+		}
+		@media (min-aspect-ratio: 5/4) {
+			canvas { float: left; }
+
+			@media (min-height: 500px) {
+				canvas { width: 450px; height: 450px; }
+			}
+			@media (min-height: 650px) {
+				canvas { width: 600px; height: 600px; }
+			}
+			@media (min-height: 800px) {
+				canvas { width: 750px; height: 750px; }
+			}
+			@media (min-height: 950px) {
+				canvas { width: 900px; height: 900px; }
+			}
+			@media (min-height: 1250px) {
+				canvas { width: 1200px; height: 1200px; }
+			}
+		}
+
+		fieldset { display: inline; }
+		.small { font-size: small; }
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+
+	<div>A*探索またはダイクストラ法によって最短経路と最短経路木の計算を行います．</div>
+	<ul>
+		<li>モデルをクリックするとスタートまたはゴールを選択できます</li>
+		<li>マウスでドラッグするかタッチパネル/トラックパッドでスワイプするとモデルを回転できます</li>
+	</ul>
+
+	<fieldset>
+		<div>
+			<input id="isAStarSearchRadio" type="radio" name="searchType" checked>
+			<label for="isAStarSearchRadio">2点の最短経路 (A*)</label>
+		</div>
+
+		<div>
+			<input id="isDijkstraSearchRadio" type="radio" name="searchType">
+			<label for="isDijkstraSearchRadio">2点の最短経路 (ダイクストラ)</label>
+		</div>
+
+		<div>
+			<input id="isShortestPathTreeRadio" type="radio" name="searchType">
+			<label for="isShortestPathTreeRadio">1点の最短経路木 (ダイクストラ)</label>
+		</div>
+
+		<div>
+			<input id="animationCheckbox" type="checkbox" checked>
+			<label for="animationCheckbox">アニメーションを有効にする</label>
+		</div>
+
+		<div>
+			<input id="showHiddenLinesCheckbox" type="checkbox" checked>
+			<label for="showHiddenLinesCheckbox">陰線を表示する</label>
+		</div>
+	</fieldset>
+
+	<p class="small">
+		このデモプログラムでは3次元表示に<a href="https://threejs.org/">three.js</a>,
+		優先順位付きキューに<a href="https://github.com/mourner/tinyqueue">tinyqueue</a>
+		を使用しています
+	</p>
+
+	<script src="three.js"></script>
+	<script src="tinyqueue.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
